@@ -1,0 +1,33 @@
+{
+  "name": "node-express-weather-app",
+  "version": "1.0.0",
+  "description": "Simple weather app for current weather and five-day forecast",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive",
+    "start": "nodemon app.js"
+  },
+  "author": "Jani Paasiluoto",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.2.0",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "weather",
+    "node.js",
+    "express.js"
+  ]
+}

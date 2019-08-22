@@ -1,0 +1,42 @@
+<%- include('./includes/head.ejs') %>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <%- include('./includes/navigation.ejs') %>
+    <main>
+         <div class="container">
+      <fieldset>
+        <form action="/" method="post">
+          <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
+          <input type="submit" class="ghost-button" value="Get Weather">
+        </form>
+        <hr>
+        <% if(weather !== null){ %>
+        <div class="centered">
+        <div class="card bg_light mb_3">
+            <div class="card__header h1"> <%= city %></div>
+                <div class="card__body">
+                    <h2 class="card__title"><%= description %></h2>
+                <figure class="figure">
+                    <img class="figure-img" src="http://openweathermap.org/img/w/<%= image[0].icon %>.png" alt="Image">
+                </figure>
+                    <h5 class="card__title">Temperature: <%= temperature %> °C </h5>
+                    <h5 class="card__title">Wind speed: <%= windspeed %> meter/sec</h5>
+                    <h5 class="card__title">Wind direction: <%= windDeg %> degrees </h5>
+                    <h5 class="card__title">Sunrise: <%= sunrise %> (Greenwich Mean Time) </h5>
+                    <h5 class="card__title">Sunset: <%= sunset %> (Greenwich Mean Time) </h5>
+                        <p class="card__content p"><%= weather %></p>
+                        <p class="card__content p"><%= windText %></p>
+                </div>
+        </div>
+        </div>
+          
+        <% } %>
+
+        <% if(error !== null){ %>
+          <p><%= error %></p>
+        <% } %>
+      </fieldset>
+    </div>
+    </main>
+  <%- include('./includes/end.ejs') %>

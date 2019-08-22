@@ -1,0 +1,50 @@
+<%- include('./includes/head.ejs') %>
+
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <%- include('./includes/navigation.ejs') %>
+    <main>
+         <div class="container">
+      <fieldset>
+        <form action="/five-day-weather" method="post">
+          <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
+          <input type="submit" class="ghost-button" value="Get Weather">
+        </form>
+        <% if(forecast !== null){ %>
+        <div class="card__header h1"> <%= city %></div>
+        <br>
+        <table class="table table-hovered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Time</th>
+                <th scope="col">Temperature °C</th>
+                <th scope="col">Weather</th>
+                <th scope="col">Humidity %</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+        <% forecast.forEach(f => { %>
+        <% const iconcode = f.weather[0].icon %>
+        <% const iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png" %>
+            <tr>
+                <td><%= f.dt_txt %></td>
+                <td><%= f.main.temp.toFixed(1) %></td>
+                <td><%= f.weather[0].main%> <img src="<%= iconurl %>" alt="img"/></td>
+                <td><%= f.main.humidity %></td>
+                
+            </tr>
+            <% }) %>
+        </tbody>
+        </table>
+        <% } %>
+
+        <% if(error !== null){ %>
+          <p><%= error %></p>
+        <% } %>
+      </fieldset>
+    </div>
+    </main>
+  <%- include('./includes/end.ejs') %>
